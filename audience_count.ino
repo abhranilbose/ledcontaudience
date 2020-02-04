@@ -11,6 +11,7 @@ void setup() {
   pinMode(led, OUTPUT);
   pinMode(IRout,INPUT);
   pinMode(IRin, INPUT );
+  pinMode(IRext, INPUT);
   Serial.begin(9600);
   
 
@@ -18,9 +19,10 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-    if(digitalRead(IRout)==HIGH &&digitalRead(IRin)==LOW){
+    if(digitalRead(IRout)==HIGH ){
     delay(500);
-    if(digitalRead(IRin)==HIGH && digitalRead(IRout)==LOW){
+    if(digitalRead(IRext)==HIGH)
+{
     count++;
     Serial.println(count);
     delay(1000);
@@ -30,10 +32,10 @@ void loop() {
     
   
   
-  if(digitalRead(IRin)==HIGH && digitalRead(IRout)==LOW){
+  if(digitalRead(IRin)==HIGH){
     delay(500);
-    
-    if(digitalRead(IRout)==HIGH && digitalRead(IRin)==LOW){
+    if(digitalRead(IRext)==HIGH)
+    {
       
     count--;
     Serial.println(count);
